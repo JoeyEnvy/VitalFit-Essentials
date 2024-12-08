@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cart - VitalFit Essentials</title>
+<style>
+
+:root {
+    --primary-color: #6C63FF;
+    --secondary-color: #4CAF50;
+    --accent-color: #FFD700;
+    --text-color: #333;
+    --background-color: #FFFFFF;
+    --card-background: #FFFFFF;
+    --border-color: #E0E0E0;
+    --hover-color: #5A52D5;
+    --error-color: #FF4D4D;
+    --success-color: #28A745;
+    --dark-background: #1A1A1A;
+    --dark-text: #FFFFFF;
+    --light-gray: #F5F5F5;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--background-color);
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header Styles */
+header {
+    background-color: var(--primary-color);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: bold;
+    color: var(--dark-text);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.logo:hover {
+    color: var(--accent-color);
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+}
+
+.nav-links li {
+    margin-left: 30px;
+    position: relative;
+}
+
+.nav-links a {
+    color: var(--dark-text);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    padding: 8px 12px;
+    border-radius: 4px;
+}
+
+.nav-links a:hover {
+    color: var(--primary-color);
+    background-color: var(--dark-text);
+}
+
+.nav-links a::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background-color: var(--accent-color);
+    transition: width 0.3s ease;
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.nav-links .active a {
+    color: var(--accent-color);
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: var(--dark-text);
+    cursor: pointer;
+}
+
+/* Main Content Styles */
+main {
+    padding: 40px 0;
+}
+
+.page-title {
+    font-size: 36px;
+    margin: 60px 0 40px;
+    text-align: center;
+    color: var(--primary-color);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+}
+
+.page-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background-color: var(--secondary-color);
+    margin: 20px auto 0;
+}
+
+/* Cart Container Styles */
+.cart-container {
+    background-color: var(--card-background);
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin-bottom: 40px;
+}
+
+.cart-header {
+    display: grid;
+    grid-template-columns: 3fr 1fr 1fr 1fr 1fr;
+    padding: 20px;
+    background-color: var(--primary-color);
+    color: var(--dark-text);
+    font-weight: bold;
+}
+
+.cart-item {
+    display: grid;
+    grid-template-columns: 3fr 1fr 1fr 1fr 1fr;
+    padding: 20px;
+    border-bottom: 1px solid var(--border-color);
+    align-items: center;
+}
+
+.item-details {
+    display: flex;
+    align-items: center;
+}
+
+.item-image {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    margin-right: 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.item-image:hover {
+    transform: scale(1.05);
+}
+
+.item-name {
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.item-attributes {
+    font-size: 14px;
+    color: var(--text-color);
+    margin-bottom: 5px;
+}
+
+.item-availability {
+    font-size: 14px;
+    color: var(--success-color);
+}
+
+.item-quantity {
+    display: flex;
+    align-items: center;
+}
+
+.quantity-input {
+    width: 50px;
+    text-align: center;
+    margin: 0 10px;
+    padding: 5px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+}
+
+.quantity-btn {
+    background-color: var(--primary-color);
+    color: var(--dark-text);
+    border: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s ease;
+}
+
+.quantity-btn:hover {
+    background-color: var(--hover-color);
+}
+
+.remove-item {
+    background-color: var(--error-color);
+    color: var(--dark-text);
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.remove-item:hover {
+    background-color: #ff3333;
+}
+
+/* Cart Summary Styles */
+.cart-summary {
+    background-color: var(--card-background);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 40px;
+}
+
+.summary-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+}
+
+.summary-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    color: var(--text-color);
+}
+
+.summary-total {
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 2px solid var(--border-color);
+}
+
+.checkout-button {
+    display: block;
+    width: 100%;
+    background-color: var(--secondary-color);
+    color: var(--dark-text);
+    text-align: center;
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+}
+
+.checkout-button:hover {
+    background-color: var(--success-color);
+}
+
+/* Promo Code Styles */
+.promo-code {
+    background-color: var(--card-background);
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    margin-bottom: 40px;
+}
+
+.promo-code h2 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: var(--primary-color);
+}
+
+.promo-code form {
+    display: flex;
+}
+
+.promo-code input[type="text"] {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px 0 0 5px;
+}
+
+.promo-code button {
+    background-color: var(--primary-color);
+    color: var(--dark-text);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.promo-code button:hover {
+    background-color: var(--hover-color);
+}
+
+/* Related Products Styles */
+.related-products {
+    margin-bottom: 40px;
+}
+
+.related-products h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.product-card {
+    background-color: var(--card-background);
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+}
+
+.product-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.product-info {
+    padding: 15px;
+}
+
+.product-name {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.product-price {
+    color: var(--primary-color);
+}
+
+/* Customer Reviews Styles */
+.customer-reviews {
+    background-color: var(--light-gray);
+    padding: 40px 0;
+    margin-bottom: 40px;
+}
+
+.customer-reviews h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+    text-align: center;
+}
+
+.review-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.review-card {
+    background-color: var(--card-background);
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.review-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.reviewer-name {
+    font-weight: bold;
+}
+
+.review-rating {
+    color: var(--accent-color);
+}
+
+.review-content {
+    font-style: italic;
+    margin-bottom: 10px;
+}
+
+.review-date {
+    font-size: 12px;
+    color: var(--text-color);
+}
+
+/* Footer Styles */
+footer {
+    background-color: var(--dark-background);
+    color: var(--dark-text);
+    padding: 40px 0;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.footer-section {
+    flex: 1;
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+
+.footer-section h3 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    color: var(--accent-color);
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section ul li {
+    margin-bottom: 10px;
+}
+
+.footer-section ul li a {
+    color: var(--dark-text);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-section ul li a:hover {
+    color: var(--accent-color);
+}
+
+.social-icons {
+    display: flex;
+    margin-top: 15px;
+}
+
+.social-icons a {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background-color: var(--primary-color);
+    color: var(--dark-text);
+    border-radius: 50%;
+    text-align: center;
+    line-height: 40px;
+    margin-right: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.social-icons a:hover {
+    background-color: var(--hover-color);
+}
+
+.footer-bottom {
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 10px 0;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.footer-bottom p {
+    font-size: 14px;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .cart-header, .cart-item {
+        grid-template-columns: 2fr 1fr 1fr;
+    }
+
+    .item-quantity, .item-total {
+        display: none;
+    }
+
+    .footer-content {
+        flex-direction: column;
+    }
+
+    .footer-section {
+        margin-right: 0;
+    }
+
+    .review-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .cart-header, .cart-item {
+        grid-template-columns: 1fr;
+    }
+
+    .item-image {
+        width: 80px;
+        height: 80px;
+    }
+
+    .item-name {
+        font-size: 16px;
+    }
+
+    .quantity-input {
+        width: 40px;
+    }
+
+    .quantity-btn {
+        width: 25px;
+        height: 25px;
+        font-size: 14px;
+    }
+}
+
+</style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="index.html" class="logo">VitalFit Essentials</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="productDetails.html">Product Details</a></li>
+                <li><a href="cartPage.html">Cart Page</a></li>
+                <li><a href="checkout.html">Checkout</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <h1 class="page-title">Your Cart</h1>
+        <div class="cart-container">
+            <div class="cart-header">
+                <div>Product</div>
+                <div>Price</div>
+                <div>Quantity</div>
+                <div>Total</div>
+                <div>Action</div>
+            </div>
+            <div class='cart-item'>
+                <div class='item-details'>
+                    <img src='https://images.unsplash.com/photo-1593079831268-3381b0db4a77' alt='Premium Yoga Mat' class='item-image'>
+                    <span class='item-name'>Premium Yoga Mat</span>
+                </div>
+                <div class='item-price'>$49.99</div>
+                <div class='item-quantity'>
+                    <button class="quantity-btn minus">-</button>
+                    <input type='number' class='quantity-input' value='1' min='1'>
+                    <button class="quantity-btn plus">+</button>
+                </div>
+                <div class='item-total'>$49.99</div>
+                <div class='item-action'>
+                    <button class='remove-item'>Remove</button>
+                </div>
+            </div>
+            <div class='cart-item'>
+                <div class='item-details'>
+                    <img src='https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e' alt='Resistance Band Set' class='item-image'>
+                    <span class='item-name'>Resistance Band Set</span>
+                </div>
+                <div class='item-price'>$29.99</div>
+                <div class='item-quantity'>
+                    <button class="quantity-btn minus">-</button>
+                    <input type='number' class='quantity-input' value='2' min='1'>
+                    <button class="quantity-btn plus">+</button>
+                </div>
+                <div class='item-total'>$59.98</div>
+                <div class='item-action'>
+                    <button class='remove-item'>Remove</button>
+                </div>
+            </div>
+            <div class='cart-item'>
+                <div class='item-details'>
+                    <img src='https://images.unsplash.com/photo-1517836357463-d25dfeac3438' alt='Smart Fitness Tracker' class='item-image'>
+                    <span class='item-name'>Smart Fitness Tracker</span>
+                </div>
+                <div class='item-price'>$99.99</div>
+                <div class='item-quantity'>
+                    <button class="quantity-btn minus">-</button>
+                    <input type='number' class='quantity-input' value='1' min='1'>
+                    <button class="quantity-btn plus">+</button>
+                </div>
+                <div class='item-total'>$99.99</div>
+                <div class='item-action'>
+                    <button class='remove-item'>Remove</button>
+                </div>
+            </div>
+        </div>
+        <div class="cart-summary">
+            <h2 class="summary-title">Order Summary</h2>
+            <div class='summary-item'>
+                <span>Subtotal:</span>
+                <span>$209.96</span>
+            </div>
+            <div class='summary-item'>
+                <span>Shipping:</span>
+                <span>Free</span>
+            </div>
+            <div class='summary-total'>
+                <span>Total:</span>
+                <span>$209.96</span>
+            </div>
+            <button class='checkout-button'>Proceed to Checkout</button>
+        </div>
+
+        <div class="promo-code">
+            <h2>Have a Promo Code?</h2>
+            <form>
+                <input type="text" placeholder="Enter your code">
+                <button type="submit">Apply</button>
+            </form>
+        </div>
+
+        <div class="related-products">
+            <h2>You May Also Like</h2>
+            <div class="product-grid">
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b" alt="Dumbbell Set">
+                    <div class="product-info">
+                        <div class="product-name">Dumbbell Set</div>
+                        <div class="product-price">$79.99</div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a" alt="Fitness Ball">
+                    <div class="product-info">
+                        <div class="product-name">Fitness Ball</div>
+                        <div class="product-price">$24.99</div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1574680096145-d05b474e2155" alt="Protein Powder">
+                    <div class="product-info">
+                        <div class="product-name">Protein Powder</div>
+                        <div class="product-price">$39.99</div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1556817411-31ae72fa3ea0" alt="Foam Roller">
+                    <div class="product-info">
+                        <div class="product-name">Foam Roller</div>
+                        <div class="product-price">$19.99</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="customer-reviews">
+            <h2>Customer Reviews</h2>
+            <div class="review-grid">
+                <div class="review-card">
+                    <div class="review-header">
+                        <img src="https://i.pravatar.cc/100?img=1" alt="Customer 1" class="reviewer-image">
+                        <div class="reviewer-info">
+                            <h3>John Doe</h3>
+                            <div class="rating">★★★★★</div>
+                        </div>
+                    </div>
+                    <p class="review-text">"Great products and fast shipping! I love my new yoga mat."</p>
+                </div>
+                <div class="review-card">
+                    <div class="review-header">
+                        <img src="https://i.pravatar.cc/100?img=2" alt="Customer 2" class="reviewer-image">
+                        <div class="reviewer-info">
+                            <h3>Jane Smith</h3>
+                            <div class="rating">★★★★☆</div>
+                        </div>
+                    </div>
+                    <p class="review-text">"The resistance bands are excellent quality. Highly recommend!"</p>
+                </div>
+                <div class="review-card">
+                    <div class="review-header">
+                        <img src="https://i.pravatar.cc/100?img=3" alt="Customer 3" class="reviewer-image">
+                        <div class="reviewer-info">
+                            <h3>Mike Johnson</h3>
+                            <div class="rating">★★★★★</div>
+                        </div>
+                    </div>
+                    <p class="review-text">"The fitness tracker has really helped me stay motivated. Love it!"</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+<footer>
+        <div class="container footer-content">
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="productDetails.html">Product Details</a></li>
+                <li><a href="cartPage.html">Cart Page</a></li>
+                <li><a href="checkout.html">Checkout</a></li>
+    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Customer Service</h3>
+                <ul>
+                    <li><a href="#">Shipping & Returns</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Connect With Us</h3>
+                <p>Stay updated on new products and fitness tips!</p>
+                <div class="social-icons">
+                    <a href="#" aria-label="Facebook">📘</a>
+                    <a href="#" aria-label="Instagram">📷</a>
+                    <a href="#" aria-label="Twitter">🐦</a>
+                    <a href="#" aria-label="YouTube">🎥</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Newsletter</h3>
+                <p>Subscribe to our newsletter for exclusive offers and updates!</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Enter your email" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelectorAll('.quantity-input').forEach(input => {
+            input.addEventListener('change', updateItemTotal);
+        });
+
+        document.querySelectorAll('.quantity-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const input = this.parentElement.querySelector('.quantity-input');
+                if (this.classList.contains('minus')) {
+                    if (input.value > 1) input.value--;
+                } else {
+                    input.value++;
+                }
+                updateItemTotal.call(input);
+            });
+        });
+
+        function updateItemTotal() {
+            const quantity = parseInt(this.value);
+            const priceElement = this.closest('.cart-item').querySelector('.item-price');
+            const totalElement = this.closest('.cart-item').querySelector('.item-total');
+            const price = parseFloat(priceElement.textContent.replace('$', ''));
+            const newTotal = (quantity * price).toFixed(2);
+            totalElement.textContent = `$${newTotal}`;
+
+            updateCartTotal();
+        }
+
+        function updateCartTotal() {
+            let total = 0;
+            document.querySelectorAll('.item-total').forEach(totalElement => {
+                total += parseFloat(totalElement.textContent.replace('$', ''));
+            });
+            document.querySelector('.summary-total span:last-child').textContent = `$${total.toFixed(2)}`;
+            document.querySelector('.summary-item span:last-child').textContent = `$${total.toFixed(2)}`;
+        }
+
+        document.querySelectorAll('.remove-item').forEach(button => {
+            button.addEventListener('click', function() {
+                const cartItem = this.closest('.cart-item');
+                cartItem.style.animation = 'fadeOut 0.5s';
+                cartItem.addEventListener('animationend', function() {
+                    cartItem.remove();
+                    updateCartTotal();
+                    if (document.querySelectorAll('.cart-item').length === 0) {
+                        document.querySelector('.cart-container').innerHTML = '<p class="empty-cart">Your cart is empty.</p>';
+                    }
+                });
+            });
+        });
+
+        document.querySelector('.promo-code form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const promoCode = this.querySelector('input[type="text"]').value;
+            // Here you would typically validate the promo code with a backend service
+            alert(`Promo code "${promoCode}" applied!`);
+        });
+
+        document.querySelector('.newsletter-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = this.querySelector('input[type="email"]').value;
+            // Here you would typically send the email to a backend service
+            alert(`Thank you for subscribing with email: ${email}`);
+            this.reset();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1655 @@
+<!DOCTYPE html><html lang="en"> 
+
+<head> <meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+
+
+<title>Premium Yoga Mat - VitalFit Essentials</title>
+
+<style> 
+
+:root {
+    --primary-color: #6C63FF;
+    --secondary-color: #4CAF50;
+    --accent-color: #FFD700;
+    --text-color: #FFFFFF;
+    --background-color: #1A1A1A;
+    --card-background: #2C2C2C;
+    --light-background: #3A3A3A;
+    --border-color: #444444;
+    --hover-color: #5A52D5;
+    --error-color: #FF4D4D;
+    --success-color: #28A745;
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header and Navigation */
+header {
+    background-color: rgba(26, 26, 26, 0.9);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links li {
+    list-style: none;
+}
+
+.nav-links a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: bold;
+    padding-bottom: 0.25rem;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--accent-color);
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--accent-color);
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=1000&q=80');
+    background-size: cover;
+    background-position: center;
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--text-color);
+}
+
+.faq-item {
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 1rem;
+}
+
+.faq-question {
+    font-weight: bold;
+    cursor: pointer;
+    padding: 1rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.faq-question::after {
+    content: '+';
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    transition: transform 0.3s ease;
+}
+
+.faq-item.active .faq-question::after {
+    transform: rotate(45deg);
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.faq-item.active .faq-answer {
+    max-height: 1000px; /* Adjust this value if needed */
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.hero p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Product Details */
+.product-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    padding: 2rem;
+    background-color: var(--card-background);
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 2rem;
+}
+
+.product-image {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+#main-image {
+    width: 100%;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+.product-image:hover #main-image {
+    transform: scale(1.05);
+}
+
+.product-gallery {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.gallery-thumbnail {
+    width: 48%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.gallery-thumbnail:hover {
+    transform: scale(1.05);
+    opacity: 0.8;
+}
+
+.product-info h2 {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.product-price {
+    font-size: 1.5rem;
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+}
+
+.product-description {
+    margin-bottom: 1.5rem;
+}
+
+.product-features h3 {
+    font-size: 1.2rem;
+    color: var(--secondary-color);
+    margin-bottom: 0.5rem;
+}
+
+.product-features ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.product-features li {
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.product-features li::before {
+    content: '✓';
+    color: var(--success-color);
+    margin-right: 0.5rem;
+}
+
+.add-to-cart {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    padding: 0.75rem 1.5rem;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.add-to-cart:hover {
+    background-color: var(--hover-color);
+    transform: translateY(-3px);
+}
+
+/* Experience the Versatility Section */
+/* Experience the Versatility Section */
+.pose-showcase {
+    background-color: var(--light-background);
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.pose-carousel {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.pose-item {
+    flex: 0 0 250px;
+    background-color: var(--card-background);
+    padding: 1.5rem;
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.pose-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.pose-icon {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.pose-item h3 {
+    font-size: 1.2rem;
+    color: var(--accent-color);
+    margin-bottom: 0.5rem;
+}
+
+.pose-item p {
+    color: var(--text-color);
+    font-size: 1rem;
+}
+
+/* Yoga Pose Showcase */
+.yoga-pose-showcase {
+    background-color: var(--light-background);
+    padding: 2rem;
+    border-radius: 10px;
+    margin-top: 2rem;
+}
+
+.pose-grid {
+    display: flex;
+    overflow-x: auto;
+    gap: 2rem;
+    padding-bottom: 1rem;
+    scroll-snap-type: x mandatory;
+}
+
+.pose-item {
+    flex: 0 0 300px;
+    scroll-snap-align: start;
+    background-color: var(--card-background);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.pose-item:hover {
+    transform: translateY(-5px);
+}
+
+.pose-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.pose-name {
+    font-size: 1.2rem;
+    margin: 1rem 0 0.5rem;
+    padding: 0 1rem;
+    color: var(--primary-color);
+}
+
+.pose-description {
+    padding: 0 1rem 1rem;
+    color: var(--text-color);
+}
+
+/* Scrollbar styling for the pose grid */
+.pose-grid::-webkit-scrollbar {
+    height: 8px;
+}
+
+.pose-grid::-webkit-scrollbar-track {
+    background: var(--card-background);
+}
+
+.pose-grid::-webkit-scrollbar-thumb {
+    background-color: var(--primary-color);
+    border-radius: 20px;
+    border: 3px solid var(--card-background);
+}
+
+/* Customer Reviews */
+.product-reviews {
+    background-color: var(--card-background);
+    padding: 2rem;
+    border-radius: 10px;
+    margin-top: 2rem;
+}
+
+.review-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.review {
+    background-color: var(--light-background);
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.review-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.review-author {
+    font-weight: bold;
+    color: var(--accent-color);
+}
+
+.review-rating {
+    color: var(--primary-color);
+}
+
+.review-content {
+    margin-bottom: 1rem;
+}
+
+.review-date {
+    font-size: 0.9rem;
+    color: var(--text-color);
+    opacity: 0.7;
+}
+
+/* FAQ Section */
+.product-faq {
+    background-color: var(--light-background);
+    padding: 2rem;
+    border-radius: 10px;
+    margin-top: 2rem;
+}
+
+.faq-list {
+    display: grid;
+    gap: 1rem;
+}
+
+.faq-item {
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 1rem;
+}
+
+.faq-question {
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.faq-question::after {
+    content: '+';
+    font-size: 1.5rem;
+    color: var(--primary-color);
+}
+
+.faq-item.active .faq-question::after {
+    content: '-';
+}
+
+.faq-answer {
+    display: none;
+    margin-top: 1rem;
+}
+
+.faq-item.active .faq-answer {
+    display: block;
+}
+
+/* Features Showcase */
+.product-features-showcase {
+    background-color: var(--card-background);
+    padding: 2rem;
+    border-radius: 10px;
+    margin-top: 2rem;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.feature-item {
+    text-align: center;
+    padding: 1.5rem;
+    background-color: var(--light-background);
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.feature-item:hover {
+    transform: translateY(-5px);
+}
+
+.feature-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+/* User Testimonials */
+.user-testimonials {
+    background-color: var(--light-background);
+    padding: 2rem;
+    border-radius: 10px;
+    margin-top: 2rem;
+}
+
+.testimonial-slider {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 2rem;
+    padding-bottom: 1rem;
+}
+
+.testimonial-slide {
+    flex: 0 0 100%;
+    scroll-snap-align: start;
+    background-color: var(--card-background);
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.testimonial-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+}
+
+.testimonial-slide blockquote {
+    font-style: italic;
+    margin-bottom: 1rem;
+}
+
+.testimonial-author {
+    font-weight: bold;
+    color: var(--accent-color);
+}
+
+/* Product Comparison */
+.product-comparison {
+    background-color: var(--card-background);
+    padding: 2rem;
+    border-radius: 10px;
+    margin-top: 2rem;
+}
+
+.comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.comparison-table th,
+.comparison-table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.comparison-table th {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+}
+
+.comparison-table tr:nth-child(even) {
+    background-color: var(--light-background);
+}
+
+/* Eco Impact */
+.eco-impact {
+    background-color: var(--light-background);
+    padding: 3rem;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    margin-top: 2rem;
+    color: var(--text-color);
+}
+
+.eco-impact h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+}
+
+.impact-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    align-items: center;
+}
+
+.impact-text {
+    flex: 1;
+    min-width: 300px;
+    background-color: var(--card-background);
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.impact-text p {
+    margin-bottom: 1rem;
+}
+
+.impact-list {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.impact-list li {
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+}
+
+.impact-list li::before {
+    content: '🌿';
+    margin-right: 0.5rem;
+    color: var(--secondary-color);
+    font-size: 1.5rem;
+}
+
+.impact-visual {
+    flex: 1;
+    min-width: 300px;
+    text-align: center;
+    background-color: var(--card-background);
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.circle-progress {
+    width: 200px;
+    height: 200px;
+    position: relative;
+    margin: 0 auto;
+}
+
+.circle-progress svg {
+    width: 100%;
+    height: 100%;
+}
+
+.circle-progress .bg {
+    display: none; /* Hides the background circle */
+}
+
+.circle-progress .progress {
+    fill: none;
+    stroke: var(--primary-color);
+    stroke-width: 10;
+    stroke-linecap: round;
+    stroke-dasharray: 326.56;
+    stroke-dashoffset: 326.56;
+    transform: rotate(-90deg);
+    transform-origin: 50% 50%;
+    transition: stroke-dashoffset 1s ease;
+}
+
+.circle-progress .percentage {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    border: 3px solid var(--primary-color);
+    border-radius: 50%;
+    padding: 0.5rem 1rem;
+    background-color: var(--card-background);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.progress-label {
+    margin-top: 1rem;
+    font-size: 1rem;
+    color: var(--text-color);
+    font-weight: bold;
+}
+
+/* Customer Gallery */
+/* Customer Gallery */
+.customer-gallery {
+    background-color: var(--card-background);
+    padding: 3rem 2rem;
+    border-radius: 10px;
+    margin-top: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.gallery-intro {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 2rem;
+}
+
+.gallery-intro h2 {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.gallery-intro p {
+    font-size: 1.1rem;
+    color: var(--text-color);
+    opacity: 0.8;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.gallery-item {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.1);
+}
+
+.gallery-item::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.7) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.gallery-item:hover::after {
+    opacity: 1;
+}
+
+.gallery-item-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1rem;
+    color: white;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.gallery-item:hover .gallery-item-caption {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+    
+    .gallery-item img {
+        height: 250px;
+    }
+}
+/* Find Your Perfect Fit Section */
+.interactive-size-guide {
+    background-color: var(--light-background);
+    padding: 2rem;
+    border-radius: 10px;
+    margin-top: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.size-guide-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    align-items: center;
+}
+
+.size-calculator {
+    flex: 1;
+    min-width: 300px;
+    background-color: var(--card-background);
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.size-calculator h3 {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.size-calculator label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+.size-calculator input {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid var(--border-color);
+    background-color: var(--background-color);
+    color: var(--text-color);
+    border-radius: 5px;
+}
+
+.size-calculator button {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 25px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.size-calculator button:hover {
+    background-color: var(--hover-color);
+    transform: translateY(-3px);
+}
+
+.size-recommendation {
+    font-weight: bold;
+    margin-top: 1rem;
+    color: var(--accent-color);
+    font-size: 1.2rem;
+}
+
+.size-explanation {
+    color: var(--text-color);
+    margin-top: 0.5rem;
+}
+
+/* Care Instructions */
+.care-instructions {
+    background-color: var(--card-background);
+    padding: 2rem;
+    border-radius: 10px;
+    margin-top: 2rem;
+}
+
+.care-steps {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.care-step {
+    flex: 1;
+    min-width: 200px;
+    max-width: 250px;
+    text-align: center;
+    background-color: var(--light-background);
+    padding: 1.5rem;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.care-step:hover {
+    transform: translateY(-5px);
+}
+
+.step-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+.care-step h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: var(--accent-color);
+}
+
+/* Related Products */
+.related-products {
+    background-color: var(--light-background);
+    padding: 2rem;
+    border-radius: 10px;
+    margin-top: 2rem;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.product-card {
+    background-color: var(--card-background);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-10px);
+}
+
+.product-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.product-card-info {
+    padding: 1.5rem;
+}
+
+.product-card-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+}
+
+.product-card-price {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+}
+
+.product-card-button {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    border-radius: 20px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.product-card-button:hover {
+    background-color: var(--hover-color);
+}
+
+/* Footer */
+footer {
+    background-color: var(--card-background);
+    color: var(--text-color);
+    padding: 3rem 0 1.5rem;
+    margin-top: 3rem;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    justify-content: space-between;
+}
+
+.footer-section {
+    padding: 1rem;
+    background-color: var(--light-background);
+    border-radius: 10px;
+}
+
+.footer-section h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: var(--accent-color);
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-section ul li a {
+    color: var(--text-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-section ul li a:hover {
+    color: var(--primary-color);
+}
+
+.social-icons {
+    display: flex;
+    margin-top: 1rem;
+}
+
+.social-icons a {
+    color: var(--text-color);
+    font-size: 1.5rem;
+    margin-right: 1rem;
+    transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: var(--primary-color);
+}
+
+.copyright {
+    text-align: center;
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .product-details,
+    .impact-content,
+    .size-guide-content {
+        flex-direction: column;
+    }
+
+    .product-image,
+    .product-info,
+    .impact-text,
+    .impact-visual,
+    .size-visual,
+    .size-controls {
+        width: 100%;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .product-title {
+        font-size: 2rem;
+    }
+
+    .product-price {
+        font-size: 1.5rem;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+    }
+
+    .footer-section {
+        flex: 100%;
+        margin-right: 0;
+    }
+
+    .nav-links {
+        display: none;
+    }
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideInFromLeft {
+    from { transform: translateX(-50px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideInFromRight {
+    from { transform: translateX(50px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+/* Apply animations */
+.product-details,
+.eco-impact,
+.interactive-size-guide,
+.care-instructions {
+    animation: fadeIn 1s ease-out;
+}
+
+.impact-text {
+    animation: slideInFromLeft 1s ease-out;
+}
+
+.impact-visual {
+    animation: slideInFromRight 1s ease-out;
+}
+
+/* Accessibility improvements */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Focus styles for better keyboard navigation */
+a:focus,
+button:focus,
+input:focus,
+textarea:focus {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+}
+
+/* Print styles */
+@media print {
+    header,
+    footer,
+    .add-to-cart,
+    .video-container,
+    .social-icons {
+        display: none;
+    }
+
+    body {
+        font-size: 12pt;
+        line-height: 1.5;
+        color: #000;
+        background: #fff;
+    }
+
+    .product-details,
+    .product-features,
+    .eco-impact,
+    .care-instructions {
+        page-break-inside: avoid;
+    }
+
+    a {
+        text-decoration: none;
+        color: #000;
+    }
+
+    h1, h2, h3 {
+        page-break-after: avoid;
+    }
+
+    img {
+        max-width: 100% !important;
+    }
+
+    @page {
+        margin: 2cm;
+    }
+}
+</style>
+
+</head> <body> <header> <nav class="container"> <a href="index.html" class="logo">VitalFit Essentials</a> <ul class="nav-links">                 <li><a href="index.html">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="productDetails.html">Product Details</a></li>
+                <li><a href="cartPage.html">Cart Page</a></li>
+                <li><a href="checkout.html">Checkout</a></li>
+    <li><a href="contact.html">Contact</a> </ul> </nav> </header>
+
+<main>
+    <section class="hero">
+        <div class="container">
+            <h1>Premium Yoga Mat</h1>
+            <p>Experience ultimate comfort and stability with our high-quality, eco-friendly yoga mat.</p>
+        </div>
+    </section>
+
+    <section class="container">
+        <div class="product-details">
+            <div class="product-image">
+                 <img src="https://images.unsplash.com/photo-1593079831268-3381b0db4a77?auto=format&fit=crop&w=1000&q=80" alt="Premium Yoga Mat" id="main-image">
+    <div class="product-gallery">
+        <img src="https://images.unsplash.com/photo-1593079831268-3381b0db4a77?auto=format&fit=crop&w=300&q=80" alt="Yoga Mat Front" class="gallery-thumbnail active" style="width: 200px; height: 200px;">
+        <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=300&q=80" alt="Yoga Mat in Use" class="gallery-thumbnail" style="width: 200px; height: 200px;">
+    </div>
+            </div>
+            <div class="product-info">
+                <h2 class="product-title">Premium Yoga Mat</h2>
+                <p class="product-price">$49.99</p>
+                <div class="product-description">
+                    <p>Experience ultimate comfort and stability with our high-quality, non-slip yoga mat. Perfect for all types of yoga practices, this mat provides excellent cushioning and grip, allowing you to focus on your poses without worrying about slipping.</p>
+                </div>
+                <div class="product-features">
+                    <h3>Key Features:</h3>
+                    <ul>
+                        <li>Non-slip surface for maximum grip</li>
+                        <li>6mm thickness for optimal comfort</li>
+                        <li>Eco-friendly, biodegradable materials</li>
+                        <li>Easy to clean and maintain</li>
+                        <li>Lightweight and portable with carrying strap</li>
+                        <li>Alignment lines for proper pose positioning</li>
+                        <li>Moisture-resistant surface</li>
+                        <li>Available in multiple colors</li>
+                    </ul>
+                </div>
+                <a href="#" class="add-to-cart">Add to Cart</a>
+            </div>
+        </div>
+    </section>
+
+   <section class="pose-showcase">
+    <div class="container">
+        <h2 class="section-title">Experience the Versatility</h2>
+        <div class="pose-carousel">
+            <div class="pose-item">
+                <i class="pose-icon fas fa-om"></i>
+                <h3>Meditation</h3>
+                <p>Perfect for seated poses and mindfulness practices.</p>
+            </div>
+            <div class="pose-item">
+                <i class="pose-icon fas fa-running"></i>
+                <h3>Dynamic Flow</h3>
+                <p>Stable surface for flowing sequences and transitions.</p>
+            </div>
+            <div class="pose-item">
+                <i class="pose-icon fas fa-balance-scale"></i>
+                <h3>Balance Poses</h3>
+                <p>Grippy texture helps maintain stability in challenging poses.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <section class="product-reviews container">
+        <h2 class="section-title">Customer Reviews</h2>
+        <div class="review-grid">
+            <div class="review">
+                <div class="review-header">
+                    <span class="review-author">Sarah J.</span>
+                    <span class="review-rating">★★★★★</span>
+                </div>
+                <p class="review-content">This yoga mat is amazing! The grip is excellent, and it's so comfortable for my daily practice. Highly recommended!</p>
+                <p class="review-date">Posted on May 15, 2023</p>
+            </div>
+            <div class="review">
+                <div class="review-header">
+                    <span class="review-author">Mike T.</span>
+                    <span class="review-rating">★★★★☆</span>
+                </div>
+                <p class="review-content">Great quality mat. The only reason I'm not giving it 5 stars is that it's a bit heavy to carry around, but it's perfect for home use.</p>
+                <p class="review-date">Posted on April 30, 2023</p>
+            </div>
+        </div>
+    </section>
+
+<section class="product-faq container">
+    <h2 class="section-title">Frequently Asked Questions</h2>
+    <div class="faq-list">
+        <div class="faq-item">
+            <h3 class="faq-question">How do I clean this yoga mat?</h3>
+            <div class="faq-answer">
+                <p>To clean your yoga mat, use a mixture of mild soap and water. Gently wipe the mat with a soft cloth, rinse with clean water, and allow it to air dry completely before rolling it up.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <h3 class="faq-question">Is this mat suitable for hot yoga?</h3>
+            <div class="faq-answer">
+                <p>Yes, this mat is suitable for hot yoga. Its moisture-resistant surface provides excellent grip even in sweaty conditions.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <h3 class="faq-question">What are the dimensions of the mat?</h3>
+            <div class="faq-answer">
+                <p>The standard size of our Premium Yoga Mat is 68" x 24" (172 cm x 61 cm). We also offer a larger size of 72" x 26" (183 cm x 66 cm) for taller practitioners.</p>
+            </div>
+        </div>
+        <div class="faq-item">
+            <h3 class="faq-question">Is the mat eco-friendly?</h3>
+            <div class="faq-answer">
+                <p>Yes, our Premium Yoga Mat is made from eco-friendly, biodegradable materials. We are committed to reducing environmental impact in our production process.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <section class="user-testimonials">
+        <div class="container">
+            <h2 class="section-title">What Our Customers Say</h2>
+            <div class="testimonial-slider">
+                <div class="testimonial-slide">
+                    <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Emma S." class="testimonial-avatar">
+                    <blockquote>"This yoga mat has transformed my practice. The grip is unparalleled, and I feel so much more stable in my poses."</blockquote>
+                    <p class="testimonial-author">- Emma S., Yoga Instructor</p>
+                </div>
+                <div class="testimonial-slide">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Alex M." class="testimonial-avatar">
+                    <blockquote>"I was skeptical about spending this much on a yoga mat, but it's worth every penny. The quality is outstanding!"</blockquote>
+                    <p class="testimonial-author">- Alex M., Fitness Enthusiast</p>
+                </div>
+                <div class="testimonial-slide">
+                    <img src="https://randomuser.me/api/portraits/women/89.jpg" alt="Sophia L." class="testimonial-avatar">
+                    <blockquote>"As someone with joint issues, the extra cushioning in this mat has made a world of difference. I can practice longer without discomfort."</blockquote>
+                    <p class="testimonial-author">- Sophia L., Beginner Yogi</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="product-comparison">
+        <div class="container">
+ <h2 class="section-title">How We Compare</h2> <div class="comparison-table-wrapper"> <table class="comparison-table"> <thead> <tr> <th>Feature</th> <th>VitalFit Premium Yoga Mat</th> <th>Competitor A</th> <th>Competitor B</th> </tr> </thead> <tbody> <tr> <td>Material</td> <td>Eco-friendly TPE</td> <td>PVC</td> <td>Rubber</td> </tr> <tr> <td>Thickness</td> <td>6mm</td> <td>4mm</td> <td>5mm</td> </tr> <tr> <td>Non-slip Surface</td> <td>✓</td> <td>✓</td> <td>✗</td> </tr> <tr> <td>Alignment Guide</td> <td>✓</td> <td>✗</td> <td>✗</td> </tr> <tr> <td>Carrying Strap</td> <td>✓</td> <td>✗</td> <td>✓</td> </tr> </tbody> </table> </div> </div> </section>
+
+    <section class="yoga-pose-showcase">
+        <div class="container">
+            <h2 class="section-title">Perfect for Every Pose</h2>
+            <div class="pose-grid">
+                <div class="pose-item">
+                    <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=500&q=60" alt="Downward Dog" class="pose-image">
+                    <h3 class="pose-name">Downward Dog</h3>
+                    <p class="pose-description">Experience stable hands and feet placement with our non-slip surface.</p>
+                </div>
+                <div class="pose-item">
+                    <img src="https://images.unsplash.com/photo-1510894347713-fc3ed6fdf539?auto=format&fit=crop&w=500&q=60" alt="Warrior Pose" class="pose-image">
+                    <h3 class="pose-name">Warrior Pose</h3>
+                    <p class="pose-description">Alignment lines help you achieve perfect form in standing poses.</p>
+                </div>
+                <div class="pose-item">
+                    <img src="https://images.unsplash.com/photo-1599447421416-3414500d18a5?auto=format&fit=crop&w=500&q=60" alt="Child's Pose" class="pose-image">
+                    <h3 class="pose-name">Child's Pose</h3>
+                    <p class="pose-description">Extra cushioning provides comfort for restorative poses.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="eco-impact">
+        <div class="container">
+            <h2 class="section-title">Our Eco Impact</h2>
+            <div class="impact-content">
+                <div class="impact-text">
+                    <p>At VitalFit, we're committed to reducing our environmental footprint. Each Premium Yoga Mat is made from sustainable materials and manufactured using eco-friendly processes.</p>
+                    <ul class="impact-list">
+                        <li>100% biodegradable materials</li>
+                        <li>Zero waste packaging</li>
+                        <li>1% of profits donated to environmental causes</li>
+                    </ul>
+                </div>
+                <div class="impact-visual">
+                    <div class="circle-progress" data-percentage="75">
+                        <svg>
+                            <circle class="bg" cx="57" cy="57" r="52" />
+                            <circle class="progress" cx="57" cy="57" r="52" />
+                        </svg>
+                        <div class="percentage">75%</div>
+                    </div>
+                    <p class="progress-label">Reduction in carbon footprint compared to traditional yoga mats</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="customer-gallery">
+        <div class="container">
+            <h2 class="section-title">Customer Gallery</h2>
+            <p class="gallery-intro">See how our customers are using their VitalFit Premium Yoga Mats. Share your photos with #VitalFitYoga for a chance to be featured!</p>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1545205597-3d9d02c29597?auto=format&fit=crop&w=500&q=60" alt="Customer using yoga mat outdoors">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?auto=format&fit=crop&w=500&q=60" alt="Group yoga class with VitalFit mats">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1603988363607-e1e4a66962c6?auto=format&fit=crop&w=500&q=60" alt="Customer in advanced yoga pose">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1600618528240-fb9fc964b853?auto=format&fit=crop&w=500&q=60" alt="VitalFit mat in home yoga studio">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="interactive-size-guide">
+        <div class="container">
+            <h2 class="section-title">Find Your Perfect Fit</h2>
+ <div class="size-guide-content">
+    <div class="size-calculator">
+        <h3>Size Calculator</h3>
+        <label for="user-height">Your Height (cm):</label>
+        <input type="number" id="user-height" min="150" max="220" value="170">
+        <label for="user-weight">Your Weight (kg):</label>
+        <input type="number" id="user-weight" min="40" max="150" value="70">
+        <button id="calculate-size">Calculate</button>
+        <p id="size-recommendation" class="size-recommendation">Recommended Size: <span>Standard (72" x 24")</span></p>
+        <p class="size-explanation">Our mat is designed to provide optimal comfort based on your height and weight.</p>
+    </div>
+</div>
+                <div class="size-controls">
+                    <label for="user-height">Your Height (cm):</label>
+                    <input type="number" id="user-height" min="100" max="220" value="170">
+                    <p class="size-recommendation" id="size-recommendation">Recommended Size: <span>Standard (68" x 24")</span></p>
+                    <p class="size-explanation">Our mat is designed to be slightly longer than your height for optimal comfort and practice space.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="care-instructions">
+        <div class="container">
+            <h2 class="section-title">Care & Maintenance</h2>
+            <div class="care-steps">
+                <div class="care-step">
+                    <div class="step-icon">🧼</div>
+                    <h3>Clean</h3>
+                    <p>Wipe down with a damp cloth and mild soap after each use.</p>
+                </div>
+                <div class="care-step">
+                    <div class="step-icon">☀️</div>
+                    <h3>Dry</h3>
+                    <p>Air dry completely before rolling up. Avoid direct sunlight.</p>
+                </div>
+                <div class="care-step">
+                    <div class="step-icon">🌡️</div>
+                    <h3>Store</h3>
+                    <p>Keep in a cool, dry place away from heat sources.</p>
+                </div>
+                <div class="care-step">
+                    <div class="step-icon">🔄</div>
+                    <h3>Rotate</h3>
+                    <p>Flip and rotate your mat regularly for even wear.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<section class="related-products" style="background-color: #f0f8ff; border-radius: 10px; padding: 40px; margin-top: 60px;">
+    <div class="container">
+        <h2 class="section-title" style="font-size: 32px; text-align: center; margin-bottom: 30px; color: #003366;">Complete Your Yoga Set</h2>
+        <div class="product-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px;">
+            <div class="product-card" style="background-color: #ffffff; border-radius: 10px; overflow: hidden; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); transition: all 0.3s ease;">
+                <img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=500&q=60" alt="Resistance Bands" class="product-image" style="width: 100%; height: 200px; object-fit: cover;">
+                <div class="product-card-info" style="padding: 20px;">
+                    <h3 class="product-card-title" style="font-size: 18px; font-weight: 600; margin-bottom: 10px; color: #003366;">Resistance Band Set</h3>
+                    <p class="product-card-price" style="font-size: 16px; font-weight: bold; color: #66ccff; margin-bottom: 15px;">$29.99</p>
+                    <a href="#" class="product-card-button" style="display: inline-block; background-color: #003366; color: #fff; padding: 8px 16px; text-decoration: none; border-radius: 20px; font-weight: 600; transition: all 0.3s ease;">View Details</a>
+                </div>
+            </div>
+            <div class="product-card" style="background-color: #ffffff; border-radius: 10px; overflow: hidden; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); transition: all 0.3s ease;">
+                <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=500&q=60" alt="Fitness Tracker" class="product-image" style="width: 100%; height: 200px; object-fit: cover;">
+                <div class="product-card-info" style="padding: 20px;">
+                    <h3 class="product-card-title" style="font-size: 18px; font-weight: 600; margin-bottom: 10px; color: #003366;">Smart Fitness Tracker</h3>
+                    <p class="product-card-price" style="font-size: 16px; font-weight: bold; color: #66ccff; margin-bottom: 15px;">$99.99</p>
+                    <a href="#" class="product-card-button" style="display: inline-block; background-color: #003366; color: #fff; padding: 8px 16px; text-decoration: none; border-radius: 20px; font-weight: 600; transition: all 0.3s ease;">View Details</a>
+                </div>
+            </div>
+            <div class="product-card" style="background-color: #ffffff; border-radius: 10px; overflow: hidden; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); transition: all 0.3s ease;">
+                <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=500&q=60" alt="Foam Roller" class="product-image" style="width: 100%; height: 200px; object-fit: cover;">
+                <div class="product-card-info" style="padding: 20px;">
+                    <h3 class="product-card-title" style="font-size: 18px; font-weight: 600; margin-bottom: 10px; color: #003366;">Foam Roller</h3>
+                    <p class="product-card-price" style="font-size: 16px; font-weight: bold; color: #66ccff; margin-bottom: 15px;">$24.99</p>
+                    <a href="#" class="product-card-button" style="display: inline-block; background-color: #003366; color: #fff; padding: 8px 16px; text-decoration: none; border-radius: 20px; font-weight: 600; transition: all 0.3s ease;">View Details</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+</main>
+
+<footer style="background-color: #003366; color: #ffffff; padding: 60px 0 30px; margin-top: 60px;">
+    <div class="container footer-content" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; justify-content: space-between;">
+        <div class="footer-section" style="padding: 20px; background-color: rgba(255, 255, 255, 0.05); border-radius: 10px;">
+            <h3 style="font-size: 20px; margin-bottom: 20px; color: #66ccff;">Quick Links</h3>
+            <ul style="list-style: none; padding: 0;">
+                <li style="margin-bottom: 10px;"><a href="index.html" style="color: #ffffff; text-decoration: none; transition: all 0.3s ease;">Home</a></li>
+                <li style="margin-bottom: 10px;"><a href="products.html" style="color: #ffffff; text-decoration: none; transition: all 0.3s ease;">Products</a></li>
+                <li style="margin-bottom: 10px;"><a href="about.html" style="color: #ffffff; text-decoration: none; transition: all 0.3s ease;">About Us</a></li>
+                <li style="margin-bottom: 10px;"><a href="contact.html" style="color: #ffffff; text-decoration: none; transition: all 0.3s ease;">Contact</a></li>
+            </ul>
+        </div>
+        <div class="footer-section" style="padding: 20px; background-color: rgba(255, 255, 255, 0.05); border-radius: 10px;">
+            <h3 style="font-size: 20px; margin-bottom: 20px; color: #66ccff;">Customer Service</h3>
+            <ul style="list-style: none; padding: 0;">
+                <li style="margin-bottom: 10px;"><a href="#" style="color: #ffffff; text-decoration: none; transition: all 0.3s ease;">Shipping & Returns</a></li>
+                <li style="margin-bottom: 10px;"><a href="#" style="color: #ffffff; text-decoration: none; transition: all 0.3s ease;">FAQ</a></li>
+                <li style="margin-bottom: 10px;"><a href="#" style="color: #ffffff; text-decoration: none; transition: all 0.3s ease;">Privacy Policy</a></li>
+                <li style="margin-bottom: 10px;"><a href="#" style="color: #ffffff; text-decoration: none; transition: all 0.3s ease;">Terms of Service</a></li>
+            </ul>
+        </div>
+        <div class="footer-section" style="padding: 20px; background-color: rgba(255, 255, 255, 0.05); border-radius: 10px;">
+            <h3 style="font-size: 20px; margin-bottom: 20px; color: #66ccff;">Connect With Us</h3>
+            <p style="margin-bottom: 20px;">Stay updated on new products and fitness tips!</p>
+            <div class="social-icons" style="display: flex;">
+                <a href="#" aria-label="Facebook" style="color: #ffffff; font-size: 24px; margin-right: 20px; transition: all 0.3s ease;">📘</a>
+                <a href="#" aria-label="Instagram" style="color: #ffffff; font-size: 24px; margin-right: 20px; transition: all 0.3s ease;">📷</a>
+                <a href="#" aria-label="Twitter" style="color: #ffffff; font-size: 24px; margin-right: 20px; transition: all 0.3s ease;">🐦</a>
+                <a href="#" aria-label="YouTube" style="color: #ffffff; font-size: 24px; margin-right: 20px; transition: all 0.3s ease;">🎥</a>
+            </div>
+        </div>
+    </div>
+    <div class="copyright" style="text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(255, 255, 255, 0.1);">
+        <p>&copy; 2023 VitalFit Essentials. All rights reserved.</p>
+    </div>
+</footer>
+
+<script>
+    document.querySelector('.video-container').addEventListener('click', function() {
+        const videoId = this.dataset.videoId;
+        const iframe = document.createElement('iframe');
+        iframe.setAttribute('src', `https://www.youtube.com/embed/${videoId}?autoplay=1`);
+        iframe.setAttribute('frameborder', '0');
+        iframe.setAttribute('allowfullscreen', '1');
+        this.innerHTML = '';
+        this.appendChild(iframe);
+    });
+
+    // Image gallery functionality
+    const mainImage = document.getElementById('main-image');
+    const thumbnails = document.querySelectorAll('.gallery-thumbnail');
+
+    thumbnails.forEach(thumbnail => {
+        thumbnail.addEventListener('click', function() {
+            mainImage.src = this.src;
+            thumbnails.forEach(thumb => thumb.classList.remove('active'));
+            this.classList.add('active');
+        });
+    });
+
+    // Interactive size guide
+    const userHeightInput = document.getElementById('user-height');
+    const sizeRecommendation = document.getElementById('size-recommendation');
+    const sizeIndicator = document.getElementById('size-indicator');
+
+    userHeightInput.addEventListener('input', function() {
+        const height = this.value;
+        let recommendation = '';
+        let indicatorHeight = 0;
+
+        if (height < 160) {
+            recommendation = 'Small if (height < 160) {
+recommendation = 'Small (66" x 24")';
+indicatorHeight = 80;
+} else if (height >= 160 && height < 180) {
+recommendation = 'Standard (68" x 24")';
+indicatorHeight = 90;
+} else {
+recommendation = 'Large (72" x 24")';
+indicatorHeight = 100;
+}
+
+   sizeRecommendation.querySelector('span').textContent = recommendation;
+    sizeIndicator.style.height = `${indicatorHeight}%`;
+});
+
+// Eco-impact circle progress animation
+const circleProgress = document.querySelector('.circle-progress');
+const progressCircle = circleProgress.querySelector('.progress');
+const percentage = circleProgress.getAttribute('data-percentage');
+
+progressCircle.style.strokeDashoffset = 326.56 - (326.56 * percentage / 100);
+
+// Scroll header effect
+window.addEventListener('scroll', function() {
+    const header = document.querySelector('header');
+    if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+    } else {
+        header.classList.remove('scrolled');
+    }
+});
+
+// Testimonial slider
+const testimonialSlider = document.querySelector('.testimonial-slider');
+let isDown = false;
+let startX;
+let scrollLeft;
+
+testimonialSlider.addEventListener('mousedown', (e) => {
+    isDown = true;
+    startX = e.pageX - testimonialSlider.offsetLeft;
+    scrollLeft = testimonialSlider.scrollLeft;
+});
+
+testimonialSlider.addEventListener('mouseleave', () => {
+    isDown = false;
+});
+
+testimonialSlider.addEventListener('mouseup', () => {
+    isDown = false;
+});
+
+testimonialSlider.addEventListener('mousemove', (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - testimonialSlider.offsetLeft;
+    const walk = (x - startX) * 3;
+    testimonialSlider.scrollLeft = scrollLeft - walk;
+});
+
+//faq 
+    document.addEventListener('DOMContentLoaded', function() {
+        const faqItems = document.querySelectorAll('.faq-item');
+        
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            const answer = item.querySelector('.faq-answer');
+            
+            question.addEventListener('click', () => {
+                // Close all other open FAQ items
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('active');
+                        otherItem.querySelector('.faq-answer').style.maxHeight = null;
+                    }
+                });
+                
+                // Toggle the clicked FAQ item
+                item.classList.toggle('active');
+                if (item.classList.contains('active')) {
+                    answer.style.maxHeight = answer.scrollHeight + "px";
+                } else {
+                    answer.style.maxHeight = null;
+                }
+            });
+        });
+    });
+
+
+</script> 
+
+</body> 
+
+</html>

@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VitalFit Essentials</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        :root {
+    --primary-color: #6C63FF;
+    --secondary-color: #4CAF50;
+    --accent-color: #FFD700;
+    --text-color: #333;
+    --background-color: #FFFFFF;
+    --card-background: #FFFFFF;
+    --border-color: #E0E0E0;
+    --hover-color: #5A52D5;
+    --error-color: #FF4D4D;
+    --success-color: #28A745;
+    --dark-background: #1A1A1A;
+    --dark-text: #FFFFFF;
+    --transition: all 0.3s ease;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: var(--text-color);
+    background-color: var(--background-color);
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Header Styles */
+header {
+    background-color: var(--primary-color);
+    color: var(--dark-text);
+    padding: 20px 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    transition: var(--transition);
+}
+
+header.scrolled {
+    background-color: rgba(108, 99, 255, 0.9);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--dark-text);
+    text-decoration: none;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+}
+
+.nav-links li {
+    margin-left: 20px;
+}
+
+.nav-links a {
+    color: var(--dark-text);
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.nav-links a:hover {
+    color: var(--accent-color);
+}
+
+.menu-toggle {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--dark-text);
+}
+
+/* Hero Section Styles */
+.hero-section {
+    background-color: var(--background-color);
+    padding: 100px 0 50px;
+    text-align: center;
+}
+
+.hero-content {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.hero-title {
+    font-size: 48px;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+}
+
+.hero-subtitle {
+    font-size: 24px;
+    margin-bottom: 30px;
+    color: var(--text-color);
+}
+
+.cta-button {
+    display: inline-block;
+    background-color: var(--accent-color);
+    color: var(--text-color);
+    padding: 12px 24px;
+    border-radius: 30px;
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.cta-button:hover {
+    background-color: var(--hover-color);
+    color: var(--dark-text);
+}
+
+.hero-images {
+    margin-top: 40px;
+}
+
+.hero-image img {
+    max-width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Featured Products Styles */
+.featured-products {
+    padding: 80px 0;
+    background-color: var(--background-color);
+}
+
+.section-title {
+    font-size: 36px;
+    text-align: center;
+    margin-bottom: 40px;
+    color: ffffff;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.product-card {
+    background-color: var(--card-background);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: var(--transition);
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.product-icon {
+    font-size: 48px;
+    color: var(--primary-color);
+    text-align: center;
+    padding: 20px 0;
+}
+
+.product-info {
+    padding: 20px;
+}
+
+.product-title {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: var(--text-color);
+}
+
+.product-price {
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--secondary-color);
+}
+
+.product-rating {
+    color: var(--accent-color);
+    margin-top: 10px;
+}
+
+/* Why Choose Us Styles */
+.why-choose-us {
+    background-color: var(--dark-background);
+    padding: 80px 0;
+    color: var(--dark-text);
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.feature-card {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    padding: 30px;
+    text-align: center;
+    transition: var(--transition);
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.feature-icon {
+    font-size: 48px;
+    color: var(--accent-color);
+    margin-bottom: 20px;
+}
+
+.feature-title {
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: var(--dark-text);
+}
+
+.feature-description {
+    font-size: 16px;
+    color: var(--dark-text);
+}
+
+/* Fitness Info Section Styles */
+.fitness-info-section {
+    padding: 80px 0;
+    background-color: var(--background-color);
+}
+
+.fitness-info-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.fitness-info-column {
+    flex: 1;
+}
+
+.fitness-info-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+.fitness-info-content {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--text-color);
+}
+
+.fitness-info-list {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.fitness-info-list li {
+    margin-bottom: 15px;
+    padding-left: 30px;
+    position: relative;
+}
+
+.fitness-info-list li::before {
+    content: '\f00c';
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    color: var(--secondary-color);
+    position: absolute;
+    left: 0;
+}
+
+/* Advanced Fitness Section Styles */
+.advanced-fitness-section {
+    padding: 80px 0;
+    background-color: var(--dark-background);
+    color: var(--dark-text);
+}
+
+.advanced-fitness-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.advanced-fitness-column {
+    flex: 1;
+    padding: 0 20px;
+}
+
+.advanced-fitness-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--accent-color);
+    margin-bottom: 20px;
+}
+
+.advanced-fitness-content {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--dark-text);
+}
+
+.advanced-fitness-list {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.advanced-fitness-list li {
+    margin-bottom: 15px;
+    padding-left: 30px;
+    position: relative;
+}
+
+.advanced-fitness-list li::before {
+    content: '\f00c';
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    color: var(--accent-color);
+    position: absolute;
+    left: 0;
+}
+
+/* Testimonials Styles */
+.testimonials {
+    padding: 80px 0;
+    background-color: var(--background-color);
+}
+
+.testimonial-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.testimonial-card {
+    background-color: var(--card-background);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: var(--transition);
+    position: relative;
+    border: 1px solid var(--border-color);
+}
+
+.testimonial-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.testimonial-card::before {
+    content: '\f10d';
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    font-size: 24px;
+    color: var(--primary-color);
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    opacity: 0.2;
+}
+
+.testimonial-text {
+    font-style: italic;
+    margin-bottom: 20px;
+    color: var(--text-color);
+}
+
+.testimonial-author {
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+/* Newsletter Signup Styles */
+.newsletter-signup {
+    background-color: var(--primary-color);
+    color: var(--dark-text);
+    padding: 60px 0;
+    text-align: center;
+}
+
+.newsletter-form {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.newsletter-form input[type="email"] {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 30px 0 0 30px;
+    font-size: 16px;
+    width: 300px;
+}
+
+.newsletter-form button {
+    background-color: var(--accent-color);
+    color: var(--text-color);
+    border: none;
+    padding: 12px 24px;
+    border-radius: 0 30px 30px 0;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.newsletter-form button:hover {
+    background-color: var(--hover-color);
+    color: var(--dark-text);
+}
+
+/* Footer Styles */
+footer {
+    background-color: var(--dark-background);
+    color: var(--dark-text);
+    padding: 60px 0 30px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+
+.footer-section {
+    flex: 1;
+    margin-right: 30px;
+    margin-bottom: 30px;
+    min-width: 200px;
+}
+
+.footer-section h3 {
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: var(--accent-color);
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section ul li {
+    margin-bottom: 10px;
+}
+
+.footer-section ul li a {
+    color: var(--dark-text);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.footer-section ul li a:hover {
+    color: var(--accent-color);
+}
+
+.social-icons {
+    display: flex;
+    margin-top: 20px;
+}
+
+.social-icons a {
+    color: var(--dark-text);
+    font-size: 24px;
+    margin-right: 20px;
+    transition: var(--transition);
+}
+
+.social-icons a:hover {
+    color: var(--accent-color);
+}
+
+.copyright {
+    text-align: center;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Call-to-Action Button Fixed */
+.cta-button-fixed {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--accent-color);
+    color: var(--text-color);
+    padding: 15px 20px;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: var(--transition);
+    z-index: 1000;
+}
+
+.cta-button-fixed:hover {
+    background-color: var(--hover-color);
+    color: var(--dark-text);
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: var(--primary-color);
+        padding: 20px;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links li {
+        margin: 10px 0;
+    }
+
+    .hero-section {
+        flex-direction: column;
+    }
+
+    .hero-content,
+    .hero-images {
+        flex: 1;
+        width: 100%;
+    }
+
+    .hero-images {
+        margin-top: 30px;
+    }
+
+    .hero-image {width: 100%;
+margin-bottom: 20px;
+}
+.hero-title {
+font-size: 36px;
+}
+.hero-subtitle {
+font-size: 18px;
+}
+.section-title {
+font-size: 28px;
+}
+.fitness-info-container,
+.advanced-fitness-container {
+flex-direction: column;
+}
+.fitness-info-column,
+.advanced-fitness-column {
+margin-bottom: 30px;
+}
+.footer-section {
+flex: 100%;
+margin-right: 0;
+}
+.newsletter-form {
+flex-direction: column;
+align-items: center;
+}
+.newsletter-form input[type="email"] {
+width: 100%;
+max-width: 300px;
+border-radius: 30px;
+margin-bottom: 10px;
+}
+.newsletter-form button {
+border-radius: 30px;
+}
+.cta-button-fixed {
+padding: 10px 15px;
+font-size: 14px;
+}
+}
+
+
+</style>
+
+</head> <body> <header> <nav class="container"> <a href="index.html" class="logo">VitalFit Essentials</a> <ul class="nav-links">                 <li><a href="index.html">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="productDetails.html">Product Details</a></li>
+                <li><a href="cartPage.html">Cart Page</a></li>
+                <li><a href="checkout.html">Checkout</a></li>
+                <li><a href="contact.html">Contact</a></li> </ul> <div class="menu-toggle"> <i class="fas fa-bars"></i> </div> </nav> </header>
+
+<main>
+    <section class="hero-section">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Transform Your Fitness Journey</h1>
+                <p class="hero-subtitle">Discover premium fitness equipment and accessories to elevate your workouts and achieve your goals.</p>
+                <a href="products.html" class="cta-button">Shop Now</a>
+            </div>
+            <div class="hero-images">
+                <div class="hero-image">
+                    <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="Fitness Equipment">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="featured-products">
+        <div class="container">
+            <h2 class="section-title">Featured Products</h2>
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-icon">
+                        <i class="fas fa-dumbbell"></i>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Adjustable Dumbells</h3>
+                        <p class="product-price">$49.99</p>
+                        <div class="product-rating">★★★★★</div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-icon">
+                        <i class="fas fa-weight"></i>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Premium Yoga Mat</h3>
+                        <p class="product-price">$199.99</p>
+                        <div class="product-rating">★★★★☆</div>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-icon">
+                        <i class="fas fa-running"></i>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Resistance Bands Pack</h3>
+                        <p class="product-price">$29.99</p>
+                        <div class="product-rating">★★★★★</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="why-choose-us">
+        <div class="container">
+            <h2 class="section-title">Why Choose VitalFit Essentials</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-medal feature-icon"></i>
+                    <h3 class="feature-title">Premium Quality</h3>
+                    <p class="feature-description">Our products are crafted with the highest quality materials for durability and performance.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-leaf feature-icon"></i>
+                    <h3 class="feature-title">Eco-Friendly</h3>
+                    <p class="feature-description">We're committed to sustainability, using eco-friendly materials and packaging.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-users feature-icon"></i>
+                    <h3 class="feature-title">Expert Support</h3>
+                    <p class="feature-description">Our team of fitness experts is here to guide you on your fitness journey.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="fitness-info-section">
+        <div class="container">
+            <h2 class="section-title">Fitness Essentials</h2>
+            <div class="fitness-info-container">
+                <div class="fitness-info-column">
+                    <h3 class="fitness-info-title">Building a Home Gym</h3>
+                    <p class="fitness-info-content">
+                        Creating a home gym doesn't have to be complicated or expensive. Start with these essential items:
+                    </p>
+                    <ul class="fitness-info-list">
+                        <li>Resistance bands for versatile strength training</li>
+                        <li>A set of adjustable dumbbells to save space</li>
+                        <li>A yoga mat for floor exercises and stretching</li>
+                        <li>A stability ball for core workouts</li>
+                        <li>A jump rope for cardio exercises</li>
+                    </ul>
+                    <p class="fitness-info-content">
+                        Gradually add more equipment as you progress in your fitness journey and identify your specific needs.
+                    </p>
+                </div>
+                <div class="fitness-info-column">
+                    <h3 class="fitness-info-title">Nutrition Tips for Fitness Success</h3>
+                    <p class="fitness-info-content">
+                        Proper nutrition is crucial for achieving your fitness goals. Follow these guidelines:
+                    </p>
+                    <ul class="fitness-info-list">
+                        <li>Eat a balanced diet with plenty of fruits, vegetables, and lean proteins</li>
+                        <li>Stay hydrated by drinking water throughout the day</li>
+                        <li>Consume complex carbohydrates for sustained energy</li>
+                        <li>Include healthy fats in your diet for hormone balance</li>
+                        <li>Time your meals around your workouts for optimal performance</li>
+                    </ul>
+                    <p class="fitness-info-content">
+                        Remember, consistency is key in both your workouts and nutrition for long-term success.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="advanced-fitness-section">
+        <div class="container">
+            <h2 class="section-title">Advanced Fitness Insights</h2>
+            <div class="advanced-fitness-container">
+                <div class="advanced-fitness-column">
+                    <h3 class="advanced-fitness-title">The Importance of Recovery</h3>
+                    <p class="advanced-fitness-content">
+                        Recovery is a crucial aspect of any fitness routine that is often overlooked. Proper recovery allows your body to repair and strengthen itself between workouts, leading to better performance and reduced risk of injury.
+                    </p>
+                    <ul class="advanced-fitness-list">
+                        <li>Get adequate sleep (7-9 hours per night) for optimal recovery</li>
+                        <li>Incorporate rest days into your workout schedule</li>
+                        <li>Practice active recovery with light exercises like walking or yoga</li>
+                        <li>Use foam rolling and stretching to improve flexibility and reduce muscle soreness</li>
+                        <li>Consider techniques like massage or contrast therapy for faster recovery</li>
+                    </ul>
+                </div>
+                <div class="advanced-fitness-column">
+                    <h3 class="advanced-fitness-title">Benefits of Strength Training</h3>
+                    <p class="advanced-fitness-content">
+                        Strength training is an essential component of a well-rounded fitness program, offering numerous benefits beyond just building muscle.
+                    </p>
+                    <ul class="advanced-fitness-list">
+                        <li>Increases muscle mass and bone density, reducing the risk of osteoporosis</li>
+                        <li>Boosts metabolism, aiding in weight management and fat loss</li>
+                        <li>Improves posture, balance, and coordination</li>
+                        <li>Enhances overall athletic performance and reduces injury risk</li>
+                        <li>Positively impacts mental health, reducing symptoms of anxiety and depression</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <h2 class="section-title">What Our Customers Say</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"VitalFit Essentials has transformed my home workouts. The quality of their products is unmatched, and I've seen significant improvements in my fitness level!"</p>
+                    <p class="testimonial-author">- Sarah J., Fitness Enthusiast</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"I love how eco-friendly their products are. It feels great to support a company that cares about the environment while helping me achieve my fitness goals."</p>
+                    <p class="testimonial-author">- Mike T., Yoga Instructor</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"The customer service at VitalFit Essentials is exceptional. They went above and beyond to help me choose the right products for my needs. Highly recommended!"</p>
+                    <p class="testimonial-author">- Emily R., Personal Trainer</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="newsletter-signup">
+        <div class="container">
+            <h2 class="section-title">Stay in the Loop</h2>
+            <p>Subscribe to our newsletter for exclusive deals, fitness tips, and new product announcements.</p>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Enter your email address" required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="container footer-content">
+        <div class="footer-section">
+            <h3>Quick Links</h3>
+            <ul>
+                      <li><a href="index.html">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="productDetails.html">Product Details</a></li>
+                <li><a href="cartPage.html">Cart Page</a></li>
+                <li><a href="checkout.html">Checkout</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3>Customer Service</h3>
+            <ul>
+                <li><a href="#">Shipping & Returns</a></li>
+                <li><a href="#">FAQ</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms of Service</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3>Connect With Us</h3>
+            <p>Stay updated on new products and fitness tips!</p>
+            <div class="social-icons">
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="copyright">
+        <p>© 2023 VitalFit Essentials. All rights reserved.</p>
+    </div>
+</footer>
+
+<a href="contact.html" class="cta-button-fixed">Contact Us Now</a>
+
+<script>
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+
+    // Mobile menu toggle
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+
+    menuToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+    });
+
+    // Scroll header effect
+    window.addEventListener('scroll', () => {
+        const header = document.querySelector('header');
+        if (window.scrollY > 50) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    });
+</script>
+
+</body> </html> 
+

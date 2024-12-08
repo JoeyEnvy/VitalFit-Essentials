@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - VitalFit Essentials</title>
+    <style>
+:root {
+    --primary-color: #6C63FF;
+    --secondary-color: #4CAF50;
+    --accent-color: #FFD700;
+    --text-color: #333;
+    --background-color: #FFFFFF;
+    --card-background: #FFFFFF;
+    --border-color: #E0E0E0;
+    --hover-color: #5A52D5;
+    --error-color: #FF4D4D;
+    --success-color: #28A745;
+    --dark-background: #1A1A1A;
+    --dark-text: #FFFFFF;
+    --light-gray: #F5F5F5;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--background-color);
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+header {
+    background-color: var(--primary-color);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    transition: background-color 0.3s ease;
+}
+
+header.scrolled {
+    background-color: var(--hover-color);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: bold;
+    color: var(--dark-text);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.logo:hover {
+    color: var(--accent-color);
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+}
+
+.nav-links li {
+    margin-left: 30px;
+    position: relative;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--dark-text);
+    font-weight: 600;
+    padding: 8px 12px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--accent-color);
+    background-color: var(--hover-color);
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: var(--card-background);
+    min-width: 160px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    border-radius: 5px;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.dropdown-content a {
+    color: var(--text-color);
+    padding: 10px 15px;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.3s ease;
+}
+
+.dropdown-content a:hover {
+    background-color: var(--hover-color);
+    color: var(--dark-text);
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    background-color: var(--background-color);
+    border-radius: 20px;
+    padding: 5px 10px;
+}
+
+.search-bar input {
+    border: none;
+    background: transparent;
+    margin-left: 10px;
+    font-size: 16px;
+}
+
+.search-bar button {
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    cursor: pointer;
+    font-size: 18px;
+}
+
+main {
+    padding-top: 150px; /* Increased from 120px */
+}
+
+.page-title {
+    font-size: 36px;
+    color: var(--primary-color);
+    margin-bottom: 70px;
+    margin-top: 50px; /* Added margin-top */
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+}
+.page-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background-color: var(--accent-color);
+    margin: 20px auto 0;
+}
+
+.checkout-container {
+    background-color: var(--card-background);
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    padding: 40px; /* Increased padding */
+    margin-bottom: 40px;
+}
+
+.checkout-header {
+    font-size: 28px; /* Increased font size */
+    color: var(--primary-color);
+    margin-bottom: 30px; /* Increased margin */
+    font-weight: 700; /* Bolder font */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.checkout-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px; /* Increased gap */
+}
+
+.checkout-form .form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.checkout-form label {
+    font-weight: 700; /* Bolder font */
+    margin-bottom: 8px;
+    color: var(--primary-color);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.checkout-form input, .checkout-form select, .checkout-form textarea {
+    padding: 12px; /* Increased padding */
+    border: 2px solid var(--border-color); /* Thicker border */
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: var(--light-gray);
+    transition: all 0.3s ease;
+}
+
+.checkout-form input:focus, .checkout-form select:focus, .checkout-form textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 8px rgba(108, 99, 255, 0.5);
+    background-color: var(--background-color);
+}
+
+.checkout-summary {
+    margin-top: 40px;
+    padding: 30px;
+    background-color: var(--light-gray);
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.summary-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    color: var(--text-color);
+    font-size: 18px;
+}
+
+.summary-total {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--primary-color);
+    border-top: 2px solid var(--border-color);
+    padding-top: 20px;
+    margin-top: 20px;
+}
+
+.checkout-button {
+    display: block;
+    width: 100%;
+    background-color: var(--primary-color);
+    color: var(--dark-text);
+    text-align: center;
+    padding: 18px; /* Increased padding */
+    border: none;
+    border-radius: 5px;
+    font-size: 20px; /* Increased font size */
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 30px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.checkout-button:hover {
+    background-color: var(--hover-color);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.info-section {
+    background-color: var(--dark-background);
+    color: var(--dark-text);
+    padding: 60px 0; /* Increased padding */
+    margin-top: 60px; /* Increased margin */
+}
+
+.info-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.info-text {
+    flex: 1;
+    padding-right: 60px; /* Increased padding */
+}
+
+.info-image {
+    flex: 1;
+    text-align: center;
+}
+
+.info-image img {
+    max-width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+footer {
+    background-color: var(--dark-background);
+    color: var(--dark-text);
+    padding: 60px 0; /* Increased padding */
+    margin-top: 60px; /* Increased margin */
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.footer-section {
+    flex: 1;
+    margin-right: 40px; /* Increased margin */
+    margin-bottom: 40px; /* Increased margin */
+    min-width: 200px;
+}
+
+.footer-section h3 {
+    font-size: 20px; /* Increased font size */
+    margin-bottom: 20px;
+    color: var(--accent-color);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section ul li {
+    margin-bottom: 12px;
+}
+
+.footer-section ul li a {
+    color: var(--dark-text);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-section ul li a:hover {
+    color: var(--accent-color);
+}
+
+.accent-text {
+    color: var(--accent-color);
+    font-weight: bold;
+}
+
+.success-message {
+    color: var(--success-color);
+    font-weight: bold;
+    background-color: rgba(40, 167, 69, 0.1);
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 30px;
+    border-left: 5px solid var(--success-color);
+}
+
+.error-message {
+    color: var(--error-color);
+    font-weight: bold;
+    background-color: rgba(255, 77, 77, 0.1);
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 30px;
+    border-left: 5px solid var(--error-color);
+}
+
+.button-primary {
+    background-color: var(--primary-color);
+    color: var(--dark-text);
+    padding: 12px 24px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.button-primary:hover {
+    background-color: var(--hover-color);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.button-secondary {
+    background-color: var(--secondary-color);
+    color: var(--dark-text);
+    padding: 12px 24px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.button-secondary:hover {
+    background-color: var(--success-color);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.highlight-box {
+    background-color: var(--accent-color);
+    color: var(--dark-background);
+    padding: 30px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+@media screen and (max-width: 768px) {
+    .checkout-form {
+        grid-template-columns: 1fr;
+    }
+
+    .info-content {
+        flex-direction: column;
+    }
+
+    .info-text {
+        padding-right: 0;
+        margin-bottom: 30px;
+    }
+
+    .footer-section {
+        flex: 100%;
+        margin-right: 0;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .nav-toggle {
+        display: block;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .page-title {
+        font-size: 28px;
+    }
+
+    .checkout-header {
+        font-size: 24px;
+    }
+
+    .checkout-button {
+        font-size: 18px;
+    }
+}
+
+   </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="index.html" class="logo">VitalFit Essentials</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="productDetails.html">Product Details</a></li>
+                <li><a href="cartPage.html">Cart Page</a></li>
+                <li><a href="checkout.html">Checkout</a></li>s
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="nav-icons">
+                <a href="#" class="search-icon">🔍</a>
+                <a href="#" class="cart-icon">🛒</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+        <h1 class="page-title">Checkout</h1>
+        <div class="checkout-container">
+            <h2 class="checkout-header">Billing Details</h2>
+            <form class="checkout-form">
+                <div class="form-group">
+                    <label for="first-name">First Name</label>
+                    <input type="text" id="first-name" name="first-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="last-name">Last Name</label>
+                    <input type="text" id="last-name" name="last-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="address">Address</label>
+                    <input type="text" id="address" name="address" required>
+                </div>
+                <div class="form-group">
+                    <label for="city">City</label>
+                    <input type="text" id="city" name="city" required>
+                </div>
+                <div class="form-group">
+                    <label for="state">State</label>
+                    <input type="text" id="state" name="state" required>
+                </div>
+                <div class="form-group">
+                    <label for="zip">Zip Code</label>
+                    <input type="text" id="zip" name="zip" required>
+                </div>
+                <div class="form-group">
+                    <label for="country">Country</label>
+                    <select id="country" name="country" required>
+                        <option value="">Select Country</option>
+                        <option value="us">United States</option>
+                        <option value="ca">Canada</option>
+                        <option value="uk">United Kingdom</option>
+                    </select>
+                </div>
+            </form>
+        </div>
+
+        <div class="checkout-container">
+            <h2 class="checkout-header">Shipping Details</h2>
+            <form class="checkout-form">
+                <div class="form-group">
+                    <label for="shipping-method">Shipping Method</label>
+                    <select id="shipping-method" name="shipping-method" required>
+                        <option value="">Select Shipping Method</option>
+                        <option value="standard">Standard Shipping (3-5 business days)</option>
+                        <option value="express">Express Shipping (1-2 business days)</option>
+                        <option value="overnight">Overnight Shipping</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="shipping-instructions">Special Instructions</label>
+                    <textarea id="shipping-instructions" name="shipping-instructions" rows="3" placeholder="Any special instructions for delivery..."></textarea>
+                </div>
+            </form>
+        </div>
+
+        <div class="checkout-container">
+            <h2 class="checkout-header">Payment Details</h2>
+            <form class="checkout-form">
+                <div class="form-group">
+                    <label for="payment-method">Payment Method</label>
+                    <select id="payment-method" name="payment-method" required>
+                        <option value="">Select Payment Method</option>
+                        <option value="credit-card">Credit Card</option>
+                        <option value="paypal">PayPal</option>
+                        <option value="bank-transfer">Bank Transfer</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="card-number">Card Number</label>
+                    <input type="text" id="card-number" name="card-number" placeholder="1234 5678 9012 3456" required>
+                </div>
+                <div class="form-group">
+                    <label for="expiry-date">Expiry Date</label>
+                    <input type="text" id="expiry-date" name="expiry-date" placeholder="MM/YY" required>
+                </div>
+                <div class="form-group">
+                    <label for="cvv">CVV</label>
+                    <input type="text" id="cvv" name="cvv" placeholder="123" required>
+                </div>
+            </form>
+        </div>
+
+        <div class="checkout-summary">
+            <h2 class="summary-title">Order Summary</h2>
+            <div class="summary-item">
+                <span>Subtotal:</span>
+                <span>$209.96</span>
+            </div>
+            <div class="summary-item">
+                <span>Shipping:</span>
+                <span>Free</span>
+            </div>
+            <div class="summary-total">
+                <span>Total:</span>
+                <span>$209.96</span>
+            </div>
+            <button class="checkout-button">Place Order</button>
+        </div>
+
+        <div class="info-section">
+            <div class="container info-content">
+                <div class="info-text">
+                    <h2>Why Choose VitalFit Essentials?</h2>
+                    <p>At VitalFit Essentials, we're committed to providing top-quality fitness products to help you achieve your health and wellness goals. Our carefully curated selection ensures that you have access to the best equipment and supplements for your fitness journey.</p>
+                    <p>With our secure checkout process and fast shipping, you can start your fitness transformation sooner. Join thousands of satisfied customers who have made VitalFit Essentials their go-to source for all things fitness!</p>
+                </div>
+                <div class="info-image">
+                    <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438" alt="Fitness Equipment" />                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Customer Service</h3>
+                <ul>
+                    <li><a href="#">Shipping & Returns</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Connect With Us</h3>
+                <p>Stay updated on new products and fitness tips!</p>
+                <div class="social-icons">
+                    <a href="#" aria-label="Facebook">📘</a>
+                    <a href="#" aria-label="Instagram">📷</a>
+                    <a href="#" aria-label="Twitter">🐦</a>
+                    <a href="#" aria-label="YouTube">🎥</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Optional: Add any JavaScript functionality here if needed
+    </script>
+
+</body>
+</html>
